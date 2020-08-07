@@ -1,6 +1,7 @@
 import { AnswerUpdated, NewRound } from '../generated/AggregatorInterface';
 import { ensurePriceFeed } from '../entities/PriceFeed';
 import { Price } from '../generated/schema';
+import { aggregateHourlyCandle } from '../entities/HourlyCandle';
 
 export function handleAnswerUpdatedForPair(
   pair: string,
@@ -24,6 +25,8 @@ export function handleAnswerUpdatedForPair(
   price.timestamp = event.params.timestamp;
   price.round = event.params.roundId;
   price.save();
+
+  aggregateHourlyCandle(price);
 }
 
 export function handleNewRoundForPair(pair: string, event: NewRound): void {

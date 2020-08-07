@@ -26,3 +26,45 @@ dataSources:
           handler: handleAnswerUpdated
         - event: NewRound(indexed uint256,indexed address,uint256)
           handler: handleNewRound
+  - name: BTCETH
+    kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x0133Aa47B6197D0BA090Bf2CD96626Eb71fFd13c'
+      abi: AggregatorInterface
+      startBlock: 9152394
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities: []
+      file: ./src/mappings/feeds/btceth.ts
+      abis:
+        - name: AggregatorInterface
+          file: ./node_modules/@chainlink/contracts/abi/v0.6/AggregatorInterface.json
+      eventHandlers:
+        - event: AnswerUpdated(indexed int256,indexed uint256,uint256)
+          handler: handleAnswerUpdated
+        - event: NewRound(indexed uint256,indexed address,uint256)
+          handler: handleNewRound
+  - name: BATETH
+    kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x9b4e2579895efa2b4765063310Dc4109a7641129'
+      abi: AggregatorInterface
+      startBlock: 9152704
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities: []
+      file: ./src/mappings/feeds/bateth.ts
+      abis:
+        - name: AggregatorInterface
+          file: ./node_modules/@chainlink/contracts/abi/v0.6/AggregatorInterface.json
+      eventHandlers:
+        - event: AnswerUpdated(indexed int256,indexed uint256,uint256)
+          handler: handleAnswerUpdated
+        - event: NewRound(indexed uint256,indexed address,uint256)
+          handler: handleNewRound
