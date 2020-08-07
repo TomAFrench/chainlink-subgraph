@@ -8,6 +8,7 @@
 
 # Generated output
 generated/
+build/
  
 # Dependency directories
 node_modules/
