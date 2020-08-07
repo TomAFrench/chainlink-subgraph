@@ -1,0 +1,16 @@
+type PriceFeed @entity {
+  id: ID!
+  pair: String!
+  latestRound: BigInt!
+  latestPrice: BigInt!
+  latestTimestamp: BigInt!
+  historicalPrices: [Price!]! @derivedFrom(field: "feed")
+}
+
+type Price @entity {
+  id: ID!
+  feed: PriceFeed!
+  round: BigInt!
+  price: BigInt!
+  timestamp: BigInt!
+}

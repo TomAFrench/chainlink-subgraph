@@ -1,0 +1,13 @@
+# All dotfiles unless whitelisted
+.*
+!.gitignore
+!.prettierrc
+
+# Logs
+*.log
+
+# Generated output
+generated/
+ 
+# Dependency directories
+node_modules/
