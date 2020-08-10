@@ -9,6 +9,10 @@
 # Generated output
 generated/
 build/
- 
+
+# Generated mappings and subgraph manifest
+subgraph.yaml
+feeds/*.ts
+
 # Dependency directories
 node_modules/

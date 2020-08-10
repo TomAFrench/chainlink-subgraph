@@ -1,0 +1,17 @@
+[
+  {
+    "pair": "ETH/USD",
+    "address": "0xF79D6aFBb6dA890132F9D7c355e3015f15F3406F",
+    "block": 9288026
+  },
+  {
+    "pair": "BTC/ETH",
+    "address": "0x0133Aa47B6197D0BA090Bf2CD96626Eb71fFd13c",
+    "block": 9152394
+  },
+  {
+    "pair": "BAT/ETH",
+    "address": "0x9b4e2579895efa2b4765063310Dc4109a7641129",
+    "block": 9152704
+  }
+]

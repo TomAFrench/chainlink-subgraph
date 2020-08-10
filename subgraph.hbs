@@ -1,0 +1,30 @@
+specVersion: 0.0.2
+description: Chainlink Price Feeds
+repository: https://github.com/avantgarde-finance/chainlink-subgraph
+schema:
+  file: ./schema.graphql
+
+dataSources:
+  {{#pairs}}
+  - name: {{name}}
+    kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '{{address}}'
+      abi: AggregatorInterface
+      startBlock: {{block}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities: []
+      file: ./src/mappings/feeds/{{filename}}.ts
+      abis:
+        - name: AggregatorInterface
+          file: ./node_modules/@chainlink/contracts/abi/v0.6/AggregatorInterface.json
+      eventHandlers:
+        - event: AnswerUpdated(indexed int256,indexed uint256,uint256)
+          handler: handleAnswerUpdated
+        - event: NewRound(indexed uint256,indexed address,uint256)
+          handler: handleNewRound
+  {{/pairs}}

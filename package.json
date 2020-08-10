@@ -24,6 +24,7 @@
     "assemblyscript": "^0.14.7",
     "glob": "^7.1.6",
     "jest": "^26.2.2",
+    "mustache": "^4.0.1",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.1.4",

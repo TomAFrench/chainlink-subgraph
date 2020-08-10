@@ -1,10 +1,11 @@
-import { handleAnswerUpdatedForPair, handleNewRoundForPair } from '../feeds';
 import { AnswerUpdated, NewRound } from '../../generated/AggregatorInterface';
+import { handleAnswerUpdatedForPair, handleNewRoundForPair } from '../feeds';
 
 export function handleAnswerUpdated(event: AnswerUpdated): void {
-  handleAnswerUpdatedForPair('ETH/USD', event);
+  handleAnswerUpdatedForPair('{{name}}', event);
 }
 
+
 export function handleNewRound(event: NewRound): void {
-  handleNewRoundForPair('ETH/USD', event);
+  handleNewRoundForPair('{{name}}', event);
 }
