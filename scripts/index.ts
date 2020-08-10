@@ -39,7 +39,7 @@ yargs
         ...item,
       }));
 
-      const templatePath = path.join(__dirname, '../subgraph.hbs');
+      const templatePath = path.join(__dirname, '../subgraph.mustache');
       const template = fs.readFileSync(templatePath, 'utf8');
 
       const subgraphPath = path.join(__dirname, '../subgraph.yaml');
@@ -49,7 +49,7 @@ yargs
 
       pairs.forEach((item) => {
         const feedsPath = path.join(__dirname, '../src/mappings/feeds');
-        const templatePath = path.join(feedsPath, 'feed.hbs');
+        const templatePath = path.join(feedsPath, 'feed.mustache');
         const template = fs.readFileSync(templatePath, 'utf8');
 
         const mappingPath = path.join(feedsPath, `${item.filename}.ts`);
