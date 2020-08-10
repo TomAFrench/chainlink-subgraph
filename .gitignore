@@ -12,7 +12,7 @@ build/
 
 # Generated mappings and subgraph manifest
 subgraph.yaml
-feeds/*.ts
+src/mappings/feeds/*.ts
 
 # Dependency directories
 node_modules/

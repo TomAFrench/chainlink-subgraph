@@ -2,9 +2,9 @@
   "private": true,
   "scripts": {
     "script": "ts-node --project scripts/tsconfig.json scripts",
-    "precodegen": "rimraf src/generated",
+    "precodegen": "rimraf src/generated src/mappings/feeds/*.ts && yarn script graphgen",
     "codegen": "graph codegen subgraph.yaml --output-dir src/generated",
-    "postcodegen": "yarn script flatten && yarn script graphgen",
+    "postcodegen": "yarn script flatten",
     "create": "graph create melonproject/chainlink --node http://localhost:8020",
     "predeploy": "yarn create || true",
     "deploy": "graph deploy melonproject/chainlink subgraph.yaml --ipfs http://localhost:5001 --node http://localhost:8020",
