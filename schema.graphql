@@ -1,11 +1,12 @@
 type PriceFeed @entity {
   id: ID!
   assetPair: String!
-  latestPrice: BigInt!
-  latestPriceRef: Price!
-  latestPriceTimestamp: BigInt!
+  latestPrice: Price!
+  latestHourlyCandle: HourlyCandle!
+  latestDailyCandle: DailyCandle!
   historicalPrices: [Price!]! @derivedFrom(field: "priceFeed")
   hourlyCandles: [HourlyCandle!]! @derivedFrom(field: "priceFeed")
+  dailyCandles: [DailyCandle!]! @derivedFrom(field: "priceFeed")
 }
 
 type Price @entity {
@@ -15,7 +16,6 @@ type Price @entity {
   transactionHash: String!
   priceFeed: PriceFeed!
   assetPair: String!
-  isLatest: Boolean!
   price: BigInt!
   timestamp: BigInt!
 }

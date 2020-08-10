@@ -1,5 +1,5 @@
-import { BigInt, ethereum } from '@graphprotocol/graph-ts';
-import { PriceFeed, Price } from '../generated/schema';
+import { ethereum } from '@graphprotocol/graph-ts';
+import { PriceFeed } from '../generated/schema';
 
 export function ensurePriceFeed(
   event: ethereum.Event,
@@ -13,19 +13,9 @@ export function ensurePriceFeed(
 
   feed = new PriceFeed(id);
   feed.assetPair = pair;
-  feed.latestPrice = BigInt.fromI32(0);
-  feed.latestPriceTimestamp = BigInt.fromI32(0);
-  feed.latestPriceRef = '';
-  feed.save();
-
-  return feed;
-}
-
-export function updatePriceFeed(feed: PriceFeed, price: Price): PriceFeed {
-  feed.latestPrice = price.price;
-  feed.latestPriceTimestamp = price.timestamp;
-  feed.latestPriceRef = price.id;
-  feed.save();
+  feed.latestPrice = '';
+  feed.latestHourlyCandle = '';
+  feed.latestDailyCandle = '';
 
   return feed;
 }

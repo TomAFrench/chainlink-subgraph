@@ -1,42 +1,104 @@
 import { BigInt, Entity, Value, store } from '@graphprotocol/graph-ts';
-import { Price, HourlyCandle, DailyCandle } from '../generated/schema';
 import { calculateAverage, calculateMedian } from '../utils/math';
+import {
+  Price,
+  HourlyCandle,
+  DailyCandle,
+  PriceFeed,
+} from '../generated/schema';
 
 export function updateHourlyCandle(price: Price): HourlyCandle {
-  return updateCandle('HourlyCandle', 3600, price) as HourlyCandle;
+  let interval = BigInt.fromI32(3600);
+  return updateCandle('HourlyCandle', interval, price) as HourlyCandle;
 }
 
 export function updateDailyCandle(price: Price): DailyCandle {
-  return updateCandle('DailyCandle', 86400, price) as DailyCandle;
+  let interval = BigInt.fromI32(86400);
+  return updateCandle('DailyCandle', interval, price) as DailyCandle;
 }
 
-export function updateCandle(type: string, length: i32, price: Price): Candle {
+export function createMissingHourlyCandles(
+  feed: PriceFeed,
+  latest: Candle,
+): void {
+  let previous = feed.latestHourlyCandle;
+  let interval = BigInt.fromI32(3600);
+  createMissingCandles('HourlyCandle', feed, latest, previous, interval);
+}
+
+export function createMissingDailyCandles(
+  feed: PriceFeed,
+  latest: Candle,
+): void {
+  let previous = feed.latestDailyCandle;
+  let interval = BigInt.fromI32(86400);
+  createMissingCandles('DailyCandle', feed, latest, previous, interval);
+}
+
+export function createMissingCandles(
+  type: string,
+  feed: PriceFeed,
+  latest: Candle,
+  previd: string,
+  interval: BigInt,
+): void {
+  let previous = Candle.load(type, previd);
+  if (!previous) {
+    return;
+  }
+
+  let open = previous.openTimestamp;
+  let prices = previous.includedPrices;
+  let last = prices[prices.length - 1];
+  let price = Price.load(last) as Price;
+
+  while (price != null && open.plus(interval).lt(latest.openTimestamp)) {
+    open = open.plus(interval);
+    let id = feed.id + '/' + open.toString();
+    let candle = createCandle(id, price, open, open.plus(interval));
+    candle.save(type);
+  }
+}
+
+export function createCandle(
+  id: string,
+  price: Price,
+  open: BigInt,
+  close: BigInt,
+): Candle {
+  let candle = new Candle(id);
+  candle.openTimestamp = open;
+  candle.closeTimestamp = close;
+  candle.assetPair = price.assetPair;
+  candle.priceFeed = price.priceFeed;
+  candle.averagePrice = price.price;
+  candle.medianPrice = price.price;
+  candle.openPrice = price.price;
+  candle.closePrice = price.price;
+  candle.highPrice = price.price;
+  candle.lowPrice = price.price;
+  candle.includedPrices = [price.id];
+  return candle;
+}
+
+export function updateCandle(
+  type: string,
+  interval: BigInt,
+  price: Price,
+): Candle {
   // Calculate hourly buckets for the open timestamp.
-  let openTimestampExcess = price.timestamp.mod(BigInt.fromI32(length));
-  let openTimestamp = price.timestamp.minus(openTimestampExcess);
-  let closeTimestamp = openTimestamp.plus(BigInt.fromI32(length));
+  let excess = price.timestamp.mod(interval);
+  let open = price.timestamp.minus(excess);
 
   // Use the calculated open timestamp to create the id of the candle
   // and either load the already existing candle or create a new one.
-  let id = price.priceFeed + '/' + openTimestamp.toString();
+  let id = price.priceFeed + '/' + open.toString();
   let candle = Candle.load(type, id);
 
   if (!candle) {
-    candle = new Candle(id);
-    candle.assetPair = price.assetPair;
-    candle.priceFeed = price.priceFeed;
-    candle.openTimestamp = openTimestamp;
-    candle.closeTimestamp = closeTimestamp;
-    candle.averagePrice = price.price;
-    candle.medianPrice = price.price;
-    candle.openPrice = price.price;
-    candle.closePrice = price.price;
-    candle.highPrice = price.price;
-    candle.lowPrice = price.price;
-    candle.includedPrices = [price.id];
+    candle = createCandle(id, price, open, open.plus(interval));
   } else {
     candle.includedPrices = candle.includedPrices.concat([price.id]);
-
     let prices = candle.includedPrices.map<BigInt>(
       (id) => Price.load(id).price,
     );
