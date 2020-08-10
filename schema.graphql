@@ -20,21 +20,6 @@ type Price @entity {
   timestamp: BigInt!
 }
 
-type Candle @entity {
-  id: ID!
-  priceFeed: PriceFeed!
-  assetPair: String!
-  openTimestamp: BigInt!
-  closeTimestamp: BigInt!
-  averagePrice: BigInt!
-  medianPrice: BigInt!
-  openPrice: BigInt!
-  closePrice: BigInt!
-  lowPrice: BigInt!
-  highPrice: BigInt!
-  includedPrices: [Price!]!
-}
-
 type HourlyCandle @entity {
   id: ID!
   priceFeed: PriceFeed!
