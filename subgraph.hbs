@@ -6,19 +6,19 @@ schema:
 
 dataSources:
   {{#pairs}}
-  - name: {{name}}
+  - name: {{{name}}}
     kind: ethereum/contract
     network: mainnet
     source:
-      address: '{{address}}'
+      address: '{{{address}}}'
       abi: AggregatorInterface
-      startBlock: {{block}}
+      startBlock: {{{block}}}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities: []
-      file: ./src/mappings/feeds/{{filename}}.ts
+      file: ./src/mappings/feeds/{{{filename}}}.ts
       abis:
         - name: AggregatorInterface
           file: ./node_modules/@chainlink/contracts/abi/v0.6/AggregatorInterface.json

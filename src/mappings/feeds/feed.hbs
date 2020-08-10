@@ -2,10 +2,9 @@ import { AnswerUpdated, NewRound } from '../../generated/AggregatorInterface';
 import { handleAnswerUpdatedForPair, handleNewRoundForPair } from '../feeds';
 
 export function handleAnswerUpdated(event: AnswerUpdated): void {
-  handleAnswerUpdatedForPair('{{name}}', event);
+  handleAnswerUpdatedForPair('{{{pair}}}', event);
 }
 
-
 export function handleNewRound(event: NewRound): void {
-  handleNewRoundForPair('{{name}}', event);
+  handleNewRoundForPair('{{{pair}}}', event);
 }
