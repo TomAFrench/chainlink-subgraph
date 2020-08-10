@@ -2,7 +2,7 @@
   {
     "pair": "ETH/USD",
     "address": "0xF79D6aFBb6dA890132F9D7c355e3015f15F3406F",
-    "block": 9288026
+    "block": 9821525
   },
   {
     "pair": "BTC/ETH",
@@ -13,5 +13,50 @@
     "pair": "BAT/ETH",
     "address": "0x9b4e2579895efa2b4765063310Dc4109a7641129",
     "block": 9152704
+  },
+  {
+    "pair": "BTC/USD",
+    "address": "0x0133Aa47B6197D0BA090Bf2CD96626Eb71fFd13c",
+    "block": 9080614
+  },
+  {
+    "pair": "DAI/ETH",
+    "address": "0x037E8F2125bF532F3e228991e051c8A7253B642c",
+    "block": 9152406
+  },
+  {
+    "pair": "KNC/ETH",
+    "address": "0xd0e785973390fF8E77a83961efDb4F271E6B8152",
+    "block": 9152576
+  },
+  {
+    "pair": "MKR/ETH",
+    "address": "0xDa3d675d50fF6C555973C4f0424964e1F6A4e7D3",
+    "block": 9152417
+  },
+  {
+    "pair": "ZRX/ETH",
+    "address": "0xA0F9D94f060836756FFC84Db4C78d097cA8C23E8",
+    "block": 9236628
+  },
+  {
+    "pair": "LINK/ETH",
+    "address": "0xeCfA53A8bdA4F0c4dd39c55CC8deF3757aCFDD07",
+    "block": 9152438
+  },
+  {
+    "pair": "USDC/ETH",
+    "address": "0xdE54467873c3BCAA76421061036053e371721708",
+    "block": 9152459
+  },
+  {
+    "pair": "REP/ETH",
+    "address": "0xb8b513d9cf440C1b6f5C7142120d611C94fC220c",
+    "block": 9152674
+  },
+  {
+    "pair": "MANA/ETH",
+    "address": "0xc89c4ed8f52Bb17314022f6c0dCB26210C905C97",
+    "block": 9152558
   }
 ]
