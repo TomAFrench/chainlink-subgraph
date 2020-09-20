@@ -4,9 +4,11 @@ type PriceFeed @entity {
   latestPrice: Price!
   latestHourlyCandle: HourlyCandle!
   latestDailyCandle: DailyCandle!
+  latestWeeklyCandle: WeeklyCandle!
   historicalPrices: [Price!]! @derivedFrom(field: "priceFeed")
   hourlyCandles: [HourlyCandle!]! @derivedFrom(field: "priceFeed")
   dailyCandles: [DailyCandle!]! @derivedFrom(field: "priceFeed")
+  weeklyCandles: [WeeklyCandle!]! @derivedFrom(field: "priceFeed")
 }
 
 type Price @entity {
@@ -36,6 +38,21 @@ type HourlyCandle @entity {
 }
 
 type DailyCandle @entity {
+  id: ID!
+  priceFeed: PriceFeed!
+  assetPair: String!
+  openTimestamp: BigInt!
+  closeTimestamp: BigInt!
+  averagePrice: BigInt!
+  medianPrice: BigInt!
+  openPrice: BigInt!
+  closePrice: BigInt!
+  lowPrice: BigInt!
+  highPrice: BigInt!
+  includedPrices: [Price!]!
+}
+
+type WeeklyCandle @entity {
   id: ID!
   priceFeed: PriceFeed!
   assetPair: String!

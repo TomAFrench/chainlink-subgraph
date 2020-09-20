@@ -4,17 +4,26 @@ import {
   Price,
   HourlyCandle,
   DailyCandle,
+  WeeklyCandle,
   PriceFeed,
 } from '../generated/schema';
 
 export function updateHourlyCandle(price: Price): HourlyCandle {
   let interval = BigInt.fromI32(3600);
-  return updateCandle('HourlyCandle', interval, price) as HourlyCandle;
+  let adjustment = BigInt.fromI32(0)
+  return updateCandle('HourlyCandle', interval, adjustment, price) as HourlyCandle;
 }
 
 export function updateDailyCandle(price: Price): DailyCandle {
   let interval = BigInt.fromI32(86400);
-  return updateCandle('DailyCandle', interval, price) as DailyCandle;
+  let adjustment = BigInt.fromI32(0)
+  return updateCandle('DailyCandle', interval, adjustment, price) as DailyCandle;
+}
+
+export function updateWeeklyCandle(price: Price): WeeklyCandle {
+  let interval = BigInt.fromI32(604800);
+  let adjustment = BigInt. fromI32(345600)
+  return updateCandle('WeeklyCandle', interval, adjustment, price) as WeeklyCandle;
 }
 
 export function createMissingHourlyCandles(
@@ -24,15 +33,6 @@ export function createMissingHourlyCandles(
   let previous = feed.latestHourlyCandle;
   let interval = BigInt.fromI32(3600);
   createMissingCandles('HourlyCandle', feed, latest, previous, interval);
-}
-
-export function createMissingDailyCandles(
-  feed: PriceFeed,
-  latest: Candle,
-): void {
-  let previous = feed.latestDailyCandle;
-  let interval = BigInt.fromI32(86400);
-  createMissingCandles('DailyCandle', feed, latest, previous, interval);
 }
 
 export function createMissingCandles(
@@ -84,12 +84,14 @@ export function createCandle(
 export function updateCandle(
   type: string,
   interval: BigInt,
+  adjustment: BigInt,
   price: Price,
 ): Candle {
-  // Calculate hourly buckets for the open timestamp.
-  let excess = price.timestamp.mod(interval);
-  let open = price.timestamp.minus(excess);
 
+  // Calculate hourly buckets for the open timestamp.
+  let excess = price.timestamp.minus(adjustment).mod(interval)
+  let open = price.timestamp.minus(excess);
+  
   // Use the calculated open timestamp to create the id of the candle
   // and either load the already existing candle or create a new one.
   let id = price.priceFeed + '/' + open.toString();

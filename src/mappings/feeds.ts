@@ -2,9 +2,9 @@ import { AnswerUpdated, NewRound } from '../generated/AggregatorInterface';
 import {
   updateHourlyCandle,
   updateDailyCandle,
-  createMissingDailyCandles,
   createMissingHourlyCandles,
   Candle,
+  updateWeeklyCandle,
 } from '../entities/Candles';
 import { ensurePriceFeed } from '../entities/PriceFeed';
 import { createPrice } from '../entities/Price';
@@ -17,13 +17,14 @@ export function handleAnswerUpdatedForPair(
   let price = createPrice(event, feed);
   let hourly = updateHourlyCandle(price);
   let daily = updateDailyCandle(price);
+  let weekly = updateWeeklyCandle(price);
 
   createMissingHourlyCandles(feed, hourly as Candle);
-  createMissingDailyCandles(feed, daily as Candle);
 
   feed.latestPrice = price.id;
   feed.latestHourlyCandle = hourly.id;
   feed.latestDailyCandle = daily.id;
+  feed.latestWeeklyCandle = weekly.id
   feed.save();
 }
 
