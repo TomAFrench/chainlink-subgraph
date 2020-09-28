@@ -16,7 +16,7 @@ export function createPrice(event: AnswerUpdated, feed: PriceFeed): Price {
   price.transactionHash = event.transaction.hash.toHex();
   price.assetPair = feed.assetPair;
   price.priceFeed = feed.id;
-  price.timestamp = event.params.timestamp;
+  price.timestamp = event.params.updatedAt;
   price.price = event.params.current;
   price.save();
 
