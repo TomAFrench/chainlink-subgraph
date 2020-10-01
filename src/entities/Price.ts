@@ -1,5 +1,7 @@
-import { Price, PriceFeed } from '../generated/schema';
 import { AnswerUpdated } from '../generated/AggregatorInterface';
+import { Price, PriceFeed } from '../generated/schema';
+import { logCritical } from '../utils/logCritical';
+import { usePriceFeed } from './PriceFeed';
 
 export function priceId(event: AnswerUpdated): string {
   let address = event.address.toHex();
@@ -15,10 +17,18 @@ export function createPrice(event: AnswerUpdated, feed: PriceFeed): Price {
   price.blockHash = event.block.hash.toHex();
   price.transactionHash = event.transaction.hash.toHex();
   price.assetPair = feed.assetPair;
-  price.priceFeed = feed.id;
+  price.priceFeed = usePriceFeed(feed.id).id;
   price.timestamp = event.params.updatedAt;
   price.price = event.params.current;
   price.save();
 
+  return price;
+}
+
+export function usePrice(id: string): Price {
+  let price = Price.load(id) as Price;
+  if (price == null) {
+    logCritical('price {} does not exist', [id]);
+  }
   return price;
 }

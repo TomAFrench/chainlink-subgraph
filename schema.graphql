@@ -1,3 +1,7 @@
+#################################################
+# Entities
+#################################################
+
 type PriceFeed @entity {
   id: ID!
   assetPair: String!
@@ -22,8 +26,37 @@ type Price @entity {
   timestamp: BigInt!
 }
 
+type AggregateState @entity {
+  id: ID!
+  latestHourlyAggregate: HourlyAggregate!
+  latestDailyAggregate: DailyAggregate!
+  latestWeeklyAggregate: WeeklyAggregate!
+}
+
+type HourlyAggregate @entity {
+  id: ID!
+  openTimestamp: BigInt!
+  closeTimestamp: BigInt!
+  candles: [HourlyCandle!]!
+}
+
+type DailyAggregate @entity {
+  id: ID!
+  openTimestamp: BigInt!
+  closeTimestamp: BigInt!
+  candles: [DailyCandle!]!
+}
+
+type WeeklyAggregate @entity {
+  id: ID!
+  openTimestamp: BigInt!
+  closeTimestamp: BigInt!
+  candles: [WeeklyCandle!]!
+}
+
 type HourlyCandle @entity {
   id: ID!
+  aggregate: HourlyAggregate!
   priceFeed: PriceFeed!
   assetPair: String!
   openTimestamp: BigInt!
@@ -39,6 +72,7 @@ type HourlyCandle @entity {
 
 type DailyCandle @entity {
   id: ID!
+  aggregate: DailyAggregate!
   priceFeed: PriceFeed!
   assetPair: String!
   openTimestamp: BigInt!
@@ -54,6 +88,7 @@ type DailyCandle @entity {
 
 type WeeklyCandle @entity {
   id: ID!
+  aggregate: WeeklyAggregate!
   priceFeed: PriceFeed!
   assetPair: String!
   openTimestamp: BigInt!

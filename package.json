@@ -1,14 +1,14 @@
 {
   "private": true,
   "scripts": {
-    "script": "ts-node --project scripts/tsconfig.json scripts",
+    "script": "ts-node scripts",
     "precodegen": "rimraf src/generated src/mappings/feeds/*.ts && yarn script graphgen",
     "codegen": "graph codegen subgraph.yaml --output-dir src/generated",
     "postcodegen": "yarn script flatten",
-    "create": "graph create melonproject/chainlink --node http://localhost:8020",
+    "create": "graph create melonproject/chainlink-dev --node http://localhost:8020",
     "predeploy": "yarn create || true",
-    "deploy": "graph deploy melonproject/chainlink subgraph.yaml --ipfs http://localhost:5001 --node http://localhost:8020",
-    "release": "graph deploy melonproject/chainlink --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy": "graph deploy melonproject/chainlink-dev subgraph.yaml --ipfs http://localhost:5001 --node http://localhost:8020",
+    "release": "graph deploy melonproject/chainlink-dev --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
     "format": "prettier --write {src,scripts}/{*,**/*}.{ts,json,yaml}",
     "lint": "yarn prettier --list-different {src,scripts}/{*,**/*}.{ts,json,yaml}"
   },
