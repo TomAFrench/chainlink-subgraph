@@ -112,7 +112,7 @@ export function updateCandle(type: string, interval: BigInt, adjustment: BigInt,
     let prices = candle.includedPrices.map<BigInt>((id) => (Price.load(id) as Price).price);
 
     candle.averagePrice = calculateAverage(prices);
-    candle.averagePrice = calculateMedian(prices);
+    candle.medianPrice = calculateMedian(prices);
     candle.closePrice = price.price;
 
     if (price.price.lt(candle.lowPrice)) {
