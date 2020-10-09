@@ -1,4 +1,4 @@
-import { BigDecimal } from '@graphprotocol/graph-ts';
+import { BigDecimal, BigInt } from '@graphprotocol/graph-ts';
 import { AnswerUpdated } from '../generated/AggregatorInterface';
 import { Price, PriceFeed } from '../generated/schema';
 import { logCritical } from '../utils/logCritical';
@@ -35,6 +35,7 @@ export function createPrice(event: AnswerUpdated, feed: PriceFeed): Price {
   price.timestamp = event.block.timestamp;
   price.price = event.params.current;
   price.priceDeviation = deviation;
+  price.priceDeviationAbsolute = deviation != null && deviation.lt(BigDecimal.fromString('0')) ? deviation.neg() : deviation;
   price.previousPrice = previous != null ? previous.id : null;
   price.timeSincePreviousPrice = previous != null ? price.timestamp.minus(previous.timestamp) : null;
   price.save();

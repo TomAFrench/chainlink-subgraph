@@ -25,6 +25,7 @@ type Price @entity {
   price: BigInt!
   timestamp: BigInt!
   priceDeviation: BigDecimal
+  priceDeviationAbsolute: BigDecimal
   previousPrice: Price
   timeSincePreviousPrice: BigInt
 }
