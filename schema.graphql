@@ -24,6 +24,9 @@ type Price @entity {
   assetPair: String!
   price: BigInt!
   timestamp: BigInt!
+  priceDeviation: BigInt
+  previousPrice: Price
+  timeSincePreviousPrice: BigInt
 }
 
 type AggregateState @entity {

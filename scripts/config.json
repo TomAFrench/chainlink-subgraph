@@ -50,6 +50,16 @@
     "block": 9152459
   },
   {
+    "pair": "USDT/ETH",
+    "address": "0x112cb637de6c1e6e71e8807ce9067aae5d5c192f",
+    "block": 10606502
+  },
+  {
+    "pair": "WOM/ETH",
+    "address": "0xd8f46c7e5f9a0dcfac79a79763634fce9302985f",
+    "block": 10606429
+  },
+  {
     "pair": "REP/ETH",
     "address": "0xb8b513d9cf440C1b6f5C7142120d611C94fC220c",
     "block": 9152674
@@ -58,5 +68,50 @@
     "pair": "MANA/ETH",
     "address": "0xc89c4ed8f52Bb17314022f6c0dCB26210C905C97",
     "block": 9152558
+  },
+  {
+    "pair": "YFI/ETH",
+    "address": "0x4a03707a1bfefc2836a69b1a6a6bd752270041a9",
+    "block": 10633309
+  },
+  {
+    "pair": "TUSD/ETH",
+    "address": "0x267af2c43f2e0be8dca6bc4344cb624cf99618a4",
+    "block": 10606431
+  },
+  {
+    "pair": "SUSD/ETH",
+    "address": "0x251884305ba6f64f5b68edaf359b29fe16f925f0",
+    "block": 10606431
+  },
+  {
+    "pair": "SNX/ETH",
+    "address": "0x93d7bbf4cf42bda5bb86eadfad09271040cc10e8",
+    "block": 10606500
+  },
+  {
+    "pair": "LRC/ETH",
+    "address": "0x174b0b72ca036b0b64f190ed83630751195d3362",
+    "block": 10606432
+  },
+  {
+    "pair": "FTM/ETH",
+    "address": "0x3aafb0e5b57bb19d02fcb6656059b34d8e79471f",
+    "block": 10606428
+  },
+  {
+    "pair": "LEND/ETH",
+    "address": "0x0a2539a614e28dddd02ebf396d2611b4f7d552fc",
+    "block": 10606428
+  },
+  {
+    "pair": "BZRX/ETH",
+    "address": "0xb58b218365cd12ad765ba8a9f88e881d2b2a01c2",
+    "block": 10702958
+  },
+  {
+    "pair": "BUSD/ETH",
+    "address": "0x057e2610e76d70e8c6ad56711798c5790d0627ba",
+    "block": 10606430
   }
 ]
