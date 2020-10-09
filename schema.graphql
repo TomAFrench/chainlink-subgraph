@@ -24,7 +24,7 @@ type Price @entity {
   assetPair: String!
   price: BigInt!
   timestamp: BigInt!
-  priceDeviation: BigInt
+  priceDeviation: BigDecimal
   previousPrice: Price
   timeSincePreviousPrice: BigInt
 }

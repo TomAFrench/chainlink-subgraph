@@ -1,8 +1,8 @@
-import { BigInt } from '@graphprotocol/graph-ts';
+import { BigDecimal } from '@graphprotocol/graph-ts';
 import { AnswerUpdated } from '../generated/AggregatorInterface';
 import { Price, PriceFeed } from '../generated/schema';
 import { logCritical } from '../utils/logCritical';
-import { usePriceFeed } from './PriceFeed';
+import { updateDailyCandle, updateHourlyCandle, updateWeeklyCandle } from './Candle';
 
 export function priceId(event: AnswerUpdated): string {
   let address = event.address.toHex();
@@ -12,27 +12,42 @@ export function priceId(event: AnswerUpdated): string {
 }
 
 export function createPrice(event: AnswerUpdated, feed: PriceFeed): Price {
-  let previous: Price | null = feed.latestPrice != '' ? usePrice(feed.latestPrice) : null;
-  let deviation: BigInt | null = null;
-
-  if (previous != null) {
-    let difference = event.params.current.minus(previous.price);
-    deviation = difference.times(BigInt.fromI32(100)).div(previous.price);
+  let id = priceId(event);
+  let price = Price.load(id) as Price;
+  if (price != null) {
+    return price;
   }
 
-  let id = priceId(event);
-  let price = new Price(id);
+  let previous: Price | null = feed.latestPrice != '' ? usePrice(feed.latestPrice) : null;
+  let deviation: BigDecimal | null = null;
+
+  if (previous != null) {
+    let difference = event.params.current.minus(previous.price).toBigDecimal();
+    deviation = difference.div(previous.price.toBigDecimal()).times(BigDecimal.fromString('100'));
+  }
+
+  price = new Price(id);
   price.blockNumber = event.block.number;
   price.blockHash = event.block.hash.toHex();
   price.transactionHash = event.transaction.hash.toHex();
   price.assetPair = feed.assetPair;
   price.priceFeed = feed.id;
-  price.timestamp = event.params.updatedAt;
+  price.timestamp = event.block.timestamp;
   price.price = event.params.current;
   price.priceDeviation = deviation;
   price.previousPrice = previous != null ? previous.id : null;
   price.timeSincePreviousPrice = previous != null ? price.timestamp.minus(previous.timestamp) : null;
   price.save();
+
+  let hourly = updateHourlyCandle(price);
+  let daily = updateDailyCandle(price);
+  let weekly = updateWeeklyCandle(price);
+
+  feed.latestPrice = price.id;
+  feed.latestHourlyCandle = hourly.id;
+  feed.latestDailyCandle = daily.id;
+  feed.latestWeeklyCandle = weekly.id;
+  feed.save();
 
   return price;
 }
