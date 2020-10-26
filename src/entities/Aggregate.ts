@@ -85,7 +85,7 @@ export function ensureAggregate(type: string, open: BigInt, close: BigInt, previ
   aggregate = new Aggregate(id);
   aggregate.openTimestamp = open;
   aggregate.closeTimestamp = close;
-  aggregate.candles = [];
+  aggregate.candles = new Array<string>();
   aggregate.save(type);
 
   createMissingAggregates(type, open, close, previous);
@@ -124,10 +124,10 @@ export function prePopulateCandles(type: string, open: BigInt, close: BigInt): C
   let previousAggregate = Aggregate.load(type, previousAggregateId);
 
   if (previousAggregate == null) {
-    return [] as Candle[];
+    return new Array<Candle>();
   }
 
-  let newCandles: Candle[] = [];
+  let newCandles: Candle[] = new Array<Candle>();
   let candles = previousAggregate.candles;
   for (let i: i32 = 0; i < candles.length; i++) {
     let previousCandle = Candle.load(type, candles[i]);
