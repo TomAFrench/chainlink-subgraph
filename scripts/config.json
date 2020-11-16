@@ -1,18 +1,33 @@
 [
   {
-    "pair": "ETH/USD",
-    "address": "0xF79D6aFBb6dA890132F9D7c355e3015f15F3406F",
-    "block": 9821525
+    "pair": "ANT/ETH",
+    "address": "0x9268d7b714af3f4e6f347ec347fd25d97dabc929",
+    "block": 9000000
   },
   {
-    "pair": "BTC/ETH",
-    "address": "0x0133Aa47B6197D0BA090Bf2CD96626Eb71fFd13c",
-    "block": 9152394
+    "pair": "BAL/ETH",
+    "address": "0x2f6bfbbb5d9cd374574aa552dc6942c01d330c75",
+    "block": 9000000
   },
   {
     "pair": "BAT/ETH",
-    "address": "0x9b4e2579895efa2b4765063310Dc4109a7641129",
+    "address": "0x3146392934da3ae09447cd7fe4061d8aa96b50ae",
     "block": 9152704
+  },
+  {
+    "pair": "BNB/ETH",
+    "address": "0x90888cddad598570c6edc443eee9aadb63cda3c4",
+    "block": 9000000
+  },
+  {
+    "pair": "BNT/ETH",
+    "address": "0x0a3ec7050884f00b5d9b11131de59dced0fafedb",
+    "block": 9000000
+  },
+  {
+    "pair": "BTC/ETH",
+    "address": "0xbd72da70007e47aaf1bbd84918675392cf6885f7",
+    "block": 9152394
   },
   {
     "pair": "BTC/USD",
@@ -20,89 +35,9 @@
     "block": 9080614
   },
   {
-    "pair": "DAI/ETH",
-    "address": "0x037E8F2125bF532F3e228991e051c8A7253B642c",
-    "block": 9152406
-  },
-  {
-    "pair": "KNC/ETH",
-    "address": "0xd0e785973390fF8E77a83961efDb4F271E6B8152",
-    "block": 9152576
-  },
-  {
-    "pair": "MKR/ETH",
-    "address": "0xDa3d675d50fF6C555973C4f0424964e1F6A4e7D3",
-    "block": 9152417
-  },
-  {
-    "pair": "ZRX/ETH",
-    "address": "0xA0F9D94f060836756FFC84Db4C78d097cA8C23E8",
-    "block": 9236628
-  },
-  {
-    "pair": "LINK/ETH",
-    "address": "0xeCfA53A8bdA4F0c4dd39c55CC8deF3757aCFDD07",
-    "block": 9152438
-  },
-  {
-    "pair": "USDC/ETH",
-    "address": "0xdE54467873c3BCAA76421061036053e371721708",
-    "block": 9152459
-  },
-  {
-    "pair": "USDT/ETH",
-    "address": "0x112cb637de6c1e6e71e8807ce9067aae5d5c192f",
-    "block": 10606502
-  },
-  {
-    "pair": "WOM/ETH",
-    "address": "0xd8f46c7e5f9a0dcfac79a79763634fce9302985f",
-    "block": 10606429
-  },
-  {
-    "pair": "REP/ETH",
-    "address": "0xb8b513d9cf440C1b6f5C7142120d611C94fC220c",
-    "block": 9152674
-  },
-  {
-    "pair": "MANA/ETH",
-    "address": "0xc89c4ed8f52Bb17314022f6c0dCB26210C905C97",
-    "block": 9152558
-  },
-  {
-    "pair": "YFI/ETH",
-    "address": "0x4a03707a1bfefc2836a69b1a6a6bd752270041a9",
-    "block": 10633309
-  },
-  {
-    "pair": "TUSD/ETH",
-    "address": "0x267af2c43f2e0be8dca6bc4344cb624cf99618a4",
-    "block": 10606431
-  },
-  {
-    "pair": "SUSD/ETH",
-    "address": "0x251884305ba6f64f5b68edaf359b29fe16f925f0",
-    "block": 10606431
-  },
-  {
-    "pair": "SNX/ETH",
-    "address": "0x93d7bbf4cf42bda5bb86eadfad09271040cc10e8",
-    "block": 10606500
-  },
-  {
-    "pair": "LRC/ETH",
-    "address": "0x174b0b72ca036b0b64f190ed83630751195d3362",
-    "block": 10606432
-  },
-  {
-    "pair": "FTM/ETH",
-    "address": "0x3aafb0e5b57bb19d02fcb6656059b34d8e79471f",
-    "block": 10606428
-  },
-  {
-    "pair": "LEND/ETH",
-    "address": "0x0a2539a614e28dddd02ebf396d2611b4f7d552fc",
-    "block": 10606428
+    "pair": "BUSD/ETH",
+    "address": "0x661be809784e094ea70f980939cf3f09337a3178",
+    "block": 10606430
   },
   {
     "pair": "BZRX/ETH",
@@ -110,8 +45,143 @@
     "block": 10702958
   },
   {
-    "pair": "BUSD/ETH",
-    "address": "0x057e2610e76d70e8c6ad56711798c5790d0627ba",
-    "block": 10606430
+    "pair": "COMP/ETH",
+    "address": "0x84e42cf61a1e87f1dd2b11da9a2831c8745371d9",
+    "block": 10702958
+  },
+  {
+    "pair": "CRV/ETH",
+    "address": "0xabb243ac767d0b7fcaa0bd5e19a7ba0d339d0b33",
+    "block": 10702958
+  },
+  {
+    "pair": "DAI/ETH",
+    "address": "0xd866a07dea5ee3c093e21d33660b5579c21f140b",
+    "block": 9152406
+  },
+  {
+    "pair": "ENJ/ETH",
+    "address": "0x20aff4833e5d261bb34bc3980d88ad17a3fe90dc",
+    "block": 9152406
+  },
+  {
+    "pair": "ETH/USD",
+    "address": "0xF79D6aFBb6dA890132F9D7c355e3015f15F3406F",
+    "block": 9821525
+  },
+  {
+    "pair": "FTM/ETH",
+    "address": "0x3aafb0e5b57bb19d02fcb6656059b34d8e79471f",
+    "block": 10606428
+  },
+  {
+    "pair": "KNC/ETH",
+    "address": "0x075fe11b3dd9c605f7fd09ff9310e3e37baabc9e",
+    "block": 9152576
+  },
+  {
+    "pair": "LEND/ETH",
+    "address": "0x0a2539a614e28dddd02ebf396d2611b4f7d552fc",
+    "block": 10606428
+  },
+  {
+    "pair": "LINK/ETH",
+    "address": "0x7e6c635d6a53b5033d1b0cee84eccea9096859e4",
+    "block": 9152438
+  },
+  {
+    "pair": "LRC/ETH",
+    "address": "0x174b0b72ca036b0b64f190ed83630751195d3362",
+    "block": 10606432
+  },
+  {
+    "pair": "MANA/ETH",
+    "address": "0x3162c2de0c254b97d869a070929b518b5b9b56b3",
+    "block": 9152558
+  },
+  {
+    "pair": "MKR/ETH",
+    "address": "0x204a6fe11de66aa463879f47f3533dd87d47020d",
+    "block": 9152417
+  },
+  {
+    "pair": "MLN/ETH",
+    "address": "0x326a719e35ee2a31d9705ba25b05d25a3a1459d9",
+    "block": 9152417
+  },
+  {
+    "pair": "NMR/ETH",
+    "address": "0x3e78373c09fb75cdb03acb47e3c3608eea91110b",
+    "block": 9152417
+  },
+  {
+    "pair": "REN/ETH",
+    "address": "0x1a53bf1bfffb7a2b33e1931d33423c7c94f675ee",
+    "block": 9152674
+  },
+  {
+    "pair": "REP/ETH",
+    "address": "0x8e1bb728b37832754a260d99b5467fe6d164c068",
+    "block": 9152674
+  },
+  {
+    "pair": "RLC/ETH",
+    "address": "0x34e9dd5975736a0c6df221d0e76dcf0d412014fa",
+    "block": 9152674
+  },
+  {
+    "pair": "SNX/ETH",
+    "address": "0x93d7bbf4cf42bda5bb86eadfad09271040cc10e8",
+    "block": 10606500
+  },
+  {
+    "pair": "SUSD/ETH",
+    "address": "0x251884305ba6f64f5b68edaf359b29fe16f925f0",
+    "block": 10606431
+  },
+  {
+    "pair": "TUSD/ETH",
+    "address": "0x267af2c43f2e0be8dca6bc4344cb624cf99618a4",
+    "block": 10606431
+  },
+  {
+    "pair": "UMA/ETH",
+    "address": "0xfa0999f1033ab29318578c7750afd07d9d187604",
+    "block": 10606431
+  },
+  {
+    "pair": "UNI/ETH",
+    "address": "0x5977d45ba0a1ffc3740506d07f5693bbc45df3c7",
+    "block": 10606431
+  },
+  {
+    "pair": "USDC/ETH",
+    "address": "0x00d02526ca08488342ab634de3b2d0050ecc7f60",
+    "block": 9152459
+  },
+  {
+    "pair": "USDT/ETH",
+    "address": "0x1058a82c25f55ab8ab0ce717f3e6e164e80f1a0b",
+    "block": 10606502
+  },
+  {
+    "pair": "WNXM/ETH",
+    "address": "0xc207e3c81e038d2cfddd6d86644ecb4e166605d8",
+    "block": 10606429
+  },
+  {
+    "pair": "WOM/ETH",
+    "address": "0xd8f46c7e5f9a0dcfac79a79763634fce9302985f",
+    "block": 10606429
+  },
+  {
+    "pair": "YFI/ETH",
+    "address": "0x4a03707a1bfefc2836a69b1a6a6bd752270041a9",
+    "block": 10633309
+  },
+  {
+    "pair": "ZRX/ETH",
+    "address": "0xe03b49682965a1eb5230d41f96e10896dc563f0d",
+    "block": 9236628
   }
 ]
